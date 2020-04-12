@@ -10,21 +10,13 @@ public class ATM {
 	private Bank myBank = new Bank();
 	private Scanner cin = new Scanner(System.in);
 	
-	public ATM() {
-	}
-	//creates all the User Accounts
-	//We may have to create a bank class if we want to save the changes
-	/**
-	 * Creates all the user Accounts. <br>
-	 * We may have to create a bank class if we want to use the the "Serializable" interface to save the data.
-	 */
-	
+	public ATM() {}
 	/**
 	 * This is the ATM welcome Screen<br>
 	 * This screen is displayed until there is user input.
 	 */
 	public void welcomeScreen() {
-		//Screen.displayWelcome();
+		Screen.displayWelcome();
 		//System.out.println("Welcome to bank. press any key to contine...");
 		String choice = cin.nextLine();
 		if(choice.equalsIgnoreCase("Q")) {}
@@ -40,16 +32,32 @@ public class ATM {
 		int tries = 0;
 		String pin, cardNumber;
 		boolean accountOpen = false;
+		boolean cancel = false; 
 		
-		while(tries < 3) {
-			pin = cin.nextLine();
-			cardNumber = cin.nextLine();
+		while(tries < 3 && !accountOpen && !cancel) {
+			if(tries > 0) {
+				System.out.print("Try Again? [y/n]: ");
+				String choice = cin.nextLine();
+				if(choice.equalsIgnoreCase("n")) {
+					cancel = true;
+				}
+			}
+			if(!cancel) {
+				System.out.println("Insert card and pin number:");
+				System.out.print("Card #: ");
+				pin = cin.nextLine();
+				System.out.print("Pin #: ");
+				cardNumber = cin.nextLine();
+				accountOpen = myBank.accessAccount(pin, cardNumber);
+				System.out.println("Account not found");
+				tries++;
+			}
 		}
-		if(openAccount != null) {
+		if(accountOpen) {
 			mainMenu();
 		}else {
 			welcomeScreen();
-		}*/
+		}
 	}
 	/**
 	 * This is the main menu in the ATM Machine. It allow user to select from withdraw funds, deposit funds, transferFunds
@@ -59,19 +67,26 @@ public class ATM {
 	 */
 	public void mainMenu() {
 		boolean quit = false;
+		boolean cancel = false;
 		
-		while(!quit) {
-			//Screen.displayMainMenu();
+		while(!quit && !cancel) {
+			Screen.displayMainMenu();
 			String choice = cin.nextLine();
 			switch(choice) {
 			case "1": //depositFunds(); break;
 			case "2": //withdrawBalance(); break;
 			case "3": //transferFunds(); break;
 			case "4": //viewBalance(); break;
-			case "5": //openAccount = null; quit = true; welcomeScreen(); break;
-			case "6": //quit = true; break:
+			case "5": cancel = true; welcomeScreen(); break;
+			case "6": quit = true; break;
 			default: System.out.println("Invalid Input");
 			}
 		}
 	}
+	
+	
+	
+	
+	
+	
 }

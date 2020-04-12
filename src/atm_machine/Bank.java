@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class Bank implements Serializable{ //we can implement Serializable to save changes
 	private Vector<UserAccount> accounts = new Vector<UserAccount>();
-	private UserAccount openAccount = null;
+	private UserAccount openAccount = null;// the account that we are using
 	/**
 	 * Constructor for Bank. It initializes the bank accounts.
 	 */
@@ -22,7 +22,12 @@ public class Bank implements Serializable{ //we can implement Serializable to sa
 		accounts.add(new UserAccount("kta779", "9326", 43, 3000));
 		accounts.add(new UserAccount("Muhammed", "9275", 4366.45, 100000.00));
 	}
-	
+	/**
+	 * Access account if card number and pin number match an account.
+	 * @param pin the pin number
+	 * @param cardNumber the card number
+	 * @return true if an account is accessed, false if an account is not accessed
+	 */
 	public boolean accessAccount(String pin, String cardNumber) {			
 		Iterator<UserAccount> it = accounts.iterator();
 					
@@ -40,5 +45,9 @@ public class Bank implements Serializable{ //we can implement Serializable to sa
 	
 	//deposit money method
 	
+	//view balance
 	
+	//transfer money	
+	
+	//close account
 }
