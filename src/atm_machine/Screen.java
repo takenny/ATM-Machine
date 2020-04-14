@@ -7,7 +7,7 @@ public class Screen {
      * Displays menu template.
      */
     public static void printMenuTemplate(String title, String menu) {
-        System.out.printf("%s%n%s%n%s%n%n%s%n", "=".repeat(title.length()), title, "=".repeat(title.length()), menu);
+        System.out.printf("%s%n%s%n%s%n%n%s", "=".repeat(title.length()), title, "=".repeat(title.length()), menu);
     }
     /**
      * In the screen class we have a DisplayMainMenu method that displays the main
@@ -51,8 +51,9 @@ public class Screen {
      * perform actions upon.
      */
     public static void chooseAccountMenu() {
-        printMenuTemplate("CHOOSE ACCOUNT",
-                "Which account do you want to perform the operation on? (enter 0 to cancel)");
+        String menu = String.format("Which account do you want to perform the operation on? (enter 0 to cancel)%n%n1. %s%n2. %s%n%nENTER NUMBER: ", 
+                                    "Checking", "Savings");
+        printMenuTemplate("CHOOSE ACCOUNT", menu);
     }
     /**
      * The TransferMoneyMenu will display options to transfer the money.
@@ -64,6 +65,6 @@ public class Screen {
      * The last method, CheckBalanceMenu will display options to check balances.
      */
     public static void checkBalanceMoney() {
-        printMenuTemplate("VIEW BALANCE", "This account has $");
+        printMenuTemplate("VIEW BALANCE", "Current Balance: $");
     }
 }
