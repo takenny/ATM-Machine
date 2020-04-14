@@ -9,7 +9,7 @@ import java.util.Map;
 public class Money {
     private Map<Integer, Integer> bills = new TreeMap<>(Collections.reverseOrder());
     /**
-     * Constructs Money object with 0 $1, $2, $5, $10, $20, * $50, and $100.
+     * Constructs Money object with 0 $1, $2, $5, $10, $20, $50, and $100.
      */
     public Money() {
         bills.put(1, 0);
