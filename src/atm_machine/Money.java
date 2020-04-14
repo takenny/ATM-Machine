@@ -3,7 +3,7 @@ import java.util.TreeMap;
 import java.util.Collections;
 import java.util.Map;
 /**
- * Provides Money class. Keeps track of number of bills for * each bill value
+ * Provides Money class. Keeps track of number of bills for each bill value
  * used.
  */
 public class Money {
