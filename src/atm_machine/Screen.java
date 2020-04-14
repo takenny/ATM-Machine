@@ -1,6 +1,7 @@
 package atm_machine;
 /**
  * Provides a Screen class. Displays different menus based on operation.
+ * @author Muhammad Damanhuri
  */
 public class Screen {
     /**
