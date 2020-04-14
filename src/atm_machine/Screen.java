@@ -30,7 +30,7 @@ public class Screen {
      * screen.
      */
     public static void displayWelcome() {
-        printMenuTemplate("WELCOME", "Enter your card number and PIN to begin.");
+        printMenuTemplate("WELCOME", "Enter your card number and PIN to begin.\n");
     }
     /**
      * The DisplayWithdrawMenu method will output the withdrawal screen, and prompts
