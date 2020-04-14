@@ -5,6 +5,7 @@ import java.util.Map;
 /**
  * Provides Money class. Keeps track of number of bills for each bill value
  * used.
+ * @author Muhammad Damanhuri
  */
 public class Money {
     private Map<Integer, Integer> bills = new TreeMap<>(Collections.reverseOrder());
