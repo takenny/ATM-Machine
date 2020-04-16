@@ -48,7 +48,7 @@ public class Bank implements Serializable{ //we can implement Serializable to sa
 	//view balance
 	/**
 	 * Displays balance of specified account.
-	 * @param BA the bank account
+	 * @param option choice of account to view. 0 will view Checking; 1 will view Savings.
 	 */
 	public void viewBalance(int option) {
 		BankAccount BA = openAccount.getAccount(option);
