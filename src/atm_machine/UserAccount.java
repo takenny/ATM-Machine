@@ -6,7 +6,7 @@ package atm_machine;
  * 
  */
 public class UserAccount {
-	
+	private static int counter = 0;
 	private BankAccount checking;
 	private BankAccount savings ;
 	BankAccount accounts[]=new BankAccount[2]; //This should be of type BankAccount -Jose
@@ -21,15 +21,13 @@ public class UserAccount {
 	 * @param ammountInChecking
 	 * @param amountInSavings
 	 */
-	public UserAccount(String userName, String pin, double ammountInChecking, double amountInSavings){
+	public UserAccount(String userName, String pin, double amountInChecking, double amountInSavings){
 		this.setUserName(userName);
 		accountPin = pin;
-		checking = new CheckingAccount(accountNumber + "0", ammountInChecking);
-		//Things to do:
-		//1. needs to generate the account number
+		generateAccountNumber();
 		
-		//2. having checking and savings and accounts is redundant. Change it so that we only have either checking/savings attributes
-		// or do something like accounts[0] = new SavingsAccount(...
+		accounts[0] = new CheckingAccount(accountNumber + "0", amountInChecking);
+		accounts[1] = new SavingsAccount(accountNumber + "1", amountInSavings);
 	}
 	/**
 	 * Setter for pin number
@@ -85,5 +83,17 @@ public class UserAccount {
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	
+	private void generateAccountNumber() {
+		accountNumber = "" + counter;
+		while(accountNumber.length() < 5) {
+			accountNumber = "0" + accountNumber;
+		}
+		counter++;
 	}
 }
