@@ -1,6 +1,6 @@
 package atm_machine;
 /**
- * Provides a Screen class. Displays different menus based on operation.
+ * Provides a Screen class. Displays different menus based on operation.<br>
  * @author Muhammad Damanhuri
  */
 public class Screen {
@@ -31,7 +31,7 @@ public class Screen {
      * screen.
      */
     public static void displayWelcome() {
-        printMenuTemplate("WELCOME", "Enter your card number and PIN to begin.\n");
+        printMenuTemplate("WELCOME", "Press Return Key to continue.\n");
     }
     /**
      * The DisplayWithdrawMenu method will output the withdrawal screen, and prompts

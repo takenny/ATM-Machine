@@ -50,6 +50,9 @@ public class UserAccount {
 	 * @return true if the pin number and account number match, otherwise it returns false
 	 */
 	public boolean verifyPin(String pin, String cardNumber) {
+		//System.out.println(pin + " " + accountPin + " " + cardNumber + " " + accountNumber);
+		//System.out.println(pin.equals(accountPin) && accountNumber.equals(cardNumber));
+		
 		if(pin.equals(accountPin) && accountNumber.equals(cardNumber)) {
 	      return true;
 	    }
@@ -63,12 +66,7 @@ public class UserAccount {
 	 * @return will return the savings account if the parameter is 1 or
 	 */
 	public BankAccount getAccount(int account){
-		if(accounts[account].equals(0)) { // if array equals 0, its account c; otherwise its account s 
-	      return checking;
-	    }
-	    else {
-	      return savings;
-	    }
+		return accounts[account];
 	}
 	/**
 	 * getter for userName
@@ -84,11 +82,17 @@ public class UserAccount {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+	/**
+	 * Getter for AccountNumber <br>
+	 * Mainly for testing purposes
+	 * @return returns a string with the Account Number
+	 */
 	public String getAccountNumber() {
 		return accountNumber;
 	}
-	
+	/**
+	 * Generates the AccountNumber
+	 */
 	private void generateAccountNumber() {
 		accountNumber = "" + counter;
 		while(accountNumber.length() < 5) {

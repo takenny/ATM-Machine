@@ -45,11 +45,13 @@ public class ATM {
 			if(!cancel) {
 				System.out.println("Insert card and pin number:");
 				System.out.print("Card #: ");
-				pin = cin.nextLine();
-				System.out.print("Pin #: ");
 				cardNumber = cin.nextLine();
+				System.out.print("Pin #: ");
+				pin = cin.nextLine();
 				accountOpen = myBank.accessAccount(pin, cardNumber);
-				System.out.println("Account not found");
+				if(!accountOpen) {
+					System.out.println("Account not found");
+				}
 				tries++;
 			}
 		}
@@ -73,10 +75,10 @@ public class ATM {
 			Screen.displayMainMenu();
 			String choice = cin.nextLine();
 			switch(choice) {
-			case "1": //depositFunds(); break;
-			case "2": //withdrawBalance(); break;
-			case "3": //transferFunds(); break;
-			case "4": //viewBalance(); break;
+			case "1": depositFunds(); break;
+			case "2": withdrawFunds(); break;
+			case "3": transferFunds(); break;
+			case "4": viewBalance(); break;
 			case "5": cancel = true; welcomeScreen(); break;
 			case "6": quit = true; break;
 			default: System.out.println("Invalid Input");
@@ -84,9 +86,21 @@ public class ATM {
 		}
 	}
 	
+	public void depositFunds() {
+		System.out.println("Function Coming Soon");
+	}
 	
+	public void withdrawFunds() {
+		myBank.withdraw(0);
+	}
 	
+	public void transferFunds() {
+		System.out.println("Function coming soon");
+	}
 	
-	
-	
+	public void viewBalance() {
+		choice 
+		myBank.viewBalance(0);
+		myBank.viewBalance(1);
+	}
 }

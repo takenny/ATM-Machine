@@ -1,10 +1,10 @@
 package atm_machine;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Vector;
 
-public class Bank implements Serializable{ //we can implement Serializable to save changes
+public class Bank { //we can implement Serializable to save changes
 	private Vector<UserAccount> accounts = new Vector<UserAccount>();
 	private UserAccount openAccount = null;// the account that we are using
 	/**
@@ -42,7 +42,9 @@ public class Bank implements Serializable{ //we can implement Serializable to sa
 	}
 	
 	//withdraw money method
-	
+	public void withdraw(int i) {
+		System.out.println(openAccount.getAccountNumber());
+	}
 	//deposit money method
 	
 	//view balance
@@ -52,8 +54,8 @@ public class Bank implements Serializable{ //we can implement Serializable to sa
 	 */
 	public void viewBalance(int option) {
 		BankAccount BA = openAccount.getAccount(option);
-		System.out.printf("%.2f%nAccount: %s%n", 
-				  BA.getBalance(), (BA instanceof CheckingAccount) ? "Checking" : "Savings");
+		System.out.printf("%nAccount: %s%nAmount: $%.2f%n", 
+				  (BA instanceof CheckingAccount) ? "Checking" : "Savings", BA.getBalance());
 	}
 	//transfer money	
 	
