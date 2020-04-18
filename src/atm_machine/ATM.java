@@ -17,11 +17,15 @@ public class ATM {
 	 */
 	public void welcomeScreen() {
 		Screen.displayWelcome();
-		//System.out.println("Welcome to bank. press any key to contine...");
 		String choice = cin.nextLine();
 		if(choice.equalsIgnoreCase("Q")) {}
 		else {
-			insertCard();
+			//This should not be commented out unless testing
+			//insertCard();
+			
+			//For Testing purposes
+			myBank.accessAccount("7433", "00000");
+			mainMenu();
 		}
 	}
 	/**
@@ -89,9 +93,21 @@ public class ATM {
 	public void depositFunds() {
 		System.out.println("Function Coming Soon");
 	}
-	
+	/**
+	 * Withdraws money from bank account. 
+	 */
 	public void withdrawFunds() {
-		myBank.withdraw(0);
+		Screen.displayWithdrawMenu();
+		int choice = getChoice();
+		
+		System.out.print("How much money would you like to withdraw?: ");
+		String amtstr = cin.nextLine();
+		try {
+			float amount = Float.parseFloat(amtstr);
+			System.out.println(amount);
+		}catch(Exception e) {
+			System.out.println("Invalid Value");
+		}
 	}
 	
 	public void transferFunds() {
@@ -99,8 +115,24 @@ public class ATM {
 	}
 	
 	public void viewBalance() {
-		choice 
-		myBank.viewBalance(0);
-		myBank.viewBalance(1);
+		Screen.checkBalanceMoney();
+		int choice = getChoice();
+		if(choice == 1 || choice == 0) {
+			System.out.printf("%nAccount: %s%nAmount: $%.2f%n", 
+					  (choice == 0) ? "Checking" : "Savings", myBank.viewBalance(choice));
+		}else if(choice == 2){}
+		else{
+			System.out.println("Invalid Choice");
+		}
+	}
+	public int getChoice() {
+		String choice = cin.nextLine();
+		switch(choice) {
+		case "1": return 0;
+		case "2": return 1;
+		case "c":
+		case "C": return 2;
+		default: return 3;
+		}
 	}
 }

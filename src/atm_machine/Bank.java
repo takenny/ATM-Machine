@@ -42,22 +42,26 @@ public class Bank { //we can implement Serializable to save changes
 	}
 	
 	//withdraw money method
-	public void withdraw(int i) {
-		System.out.println(openAccount.getAccountNumber());
+	public boolean withdraw(int i, float amount) {
+		return openAccount.getAccount(i).withdraw(amount);
 	}
+	
 	//deposit money method
+	//public void deposit(int i, float amount)
 	
 	//view balance
 	/**
 	 * Displays balance of specified account.
 	 * @param option choice of account to view. 0 will view Checking; 1 will view Savings.
 	 */
-	public void viewBalance(int option) {
+	public double viewBalance(int option) {
 		BankAccount BA = openAccount.getAccount(option);
-		System.out.printf("%nAccount: %s%nAmount: $%.2f%n", 
-				  (BA instanceof CheckingAccount) ? "Checking" : "Savings", BA.getBalance());
+		return BA.getBalance();
 	}
-	//transfer money	
+	//transfer money
+	//public void transfer(int i, float amount, String accountNumber)
 	
-	//close account
+	public void closeAccount() {
+		openAccount = null;
+	}
 }

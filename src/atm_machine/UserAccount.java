@@ -7,8 +7,6 @@ package atm_machine;
  */
 public class UserAccount {
 	private static int counter = 0;
-	private BankAccount checking;
-	private BankAccount savings ;
 	BankAccount accounts[]=new BankAccount[2]; //This should be of type BankAccount -Jose
 	private String accountNumber;
 	private String accountPin;

@@ -8,7 +8,7 @@ public class Screen {
      * Displays menu template.
      */
     public static void printMenuTemplate(String title, String menu) {
-        System.out.printf("%s%n%s%n%s%n%n%s", "=".repeat(title.length()), title, "=".repeat(title.length()), menu);
+        System.out.printf("%n%n%s%n%s%n%s%n%n%s", "=".repeat(title.length()), title, "=".repeat(title.length()), menu);
     }
     /**
      * In the screen class we have a DisplayMainMenu method that displays the main
@@ -38,34 +38,35 @@ public class Screen {
      * users to choose an option.
      */
     public static void displayWithdrawMenu() {
-        printMenuTemplate("WITHDRAW", "Enter the amount you want to withdraw (enter 0 to cancel): $");
+        printMenuTemplate("WITHDRAW", chooseAccountMenu());
     }
     /**
      * The DepositMenu method will display the deposit screen, and prompts users to
      * choose an option.
      */
     public static void depositMenu() {
-        printMenuTemplate("DEPOSIT", "Enter the amount you want to deposit (enter 0 to cancel): $");
+        printMenuTemplate("DEPOSIT", chooseAccountMenu());
     }
     /**
      * The ChooseAccountMenu method will prompt the user to choose an account to
      * perform actions upon.
      */
-    public static void chooseAccountMenu() {
-        String menu = String.format("Which account do you want to perform the operation on? (enter 0 to cancel)%n%n1. %s%n2. %s%n%nENTER NUMBER: ", 
+    public static String chooseAccountMenu() {
+        String menu = String.format("Which account do you want to perform the operation on? (enter c to cancel)%n%n1. %s%n2. %s%n%nENTER NUMBER: ", 
                                     "Checking", "Savings");
-        printMenuTemplate("CHOOSE ACCOUNT", menu);
+        //printMenuTemplate("CHOOSE ACCOUNT", menu);
+        return menu;
     }
     /**
      * The TransferMoneyMenu will display options to transfer the money.
      */
     public static void transferMoneyMenu() {
-        printMenuTemplate("TRANSFER", "Enter the amount you want to transfer (enter 0 to cancel): $");
+        printMenuTemplate("TRANSFER", chooseAccountMenu());
     }
     /**
      * The last method, CheckBalanceMenu will display options to check balances.
      */
     public static void checkBalanceMoney() {
-        printMenuTemplate("VIEW BALANCE", "Current Balance: $");
+        printMenuTemplate("VIEW BALANCE", chooseAccountMenu());
     }
 }

@@ -20,25 +20,29 @@ public class SavingsAccount extends BankAccount{
 	}
 	/**
 	 * Withdraw money from account.
-	 * If it attempts to withdraw more than three times within a certian time period
+	 * If it attempts to withdraw more than three times within a certain time period
 	 * it will not allow it.
 	 * @param amount amount being withdrawn from bank account
 	 */
 	@Override
 	public boolean withdraw(double amount) {
-		long CurrentMonth = System.currentTimeMillis()/(1000L * 60 * 60 * 24 * 30);
-		if(CurrentMonth>DateReset) {
-			DateReset = CurrentMonth;
-			monthlyWithdrawls = 0;
-		}
-		
-		if(monthlyWithdrawls<3) {
-			monthlyWithdrawls+=1;
-			balance-=amount;
-			return true;
-		}
-		else {
+		if(amount > balance) {
 			return false;
+		}else {
+			long CurrentMonth = System.currentTimeMillis()/(1000L * 60 * 60 * 24 * 30);
+			if(CurrentMonth>DateReset) {
+				DateReset = CurrentMonth;
+				monthlyWithdrawls = 0;
+			}
+		
+			if(monthlyWithdrawls<3) {
+				monthlyWithdrawls+=1;
+				balance-=amount;
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
 	}
 }

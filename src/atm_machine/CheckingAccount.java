@@ -20,7 +20,12 @@ public class CheckingAccount extends BankAccount{
 	 */
 	@Override
 	public boolean withdraw(double amount) {
-		balance -= amount;
-		return true;
+		if(amount > balance) {
+			return false;
+		}
+		else {
+			balance -= amount;
+			return true;
+		}
 	}
 }
