@@ -42,7 +42,7 @@ public class Bank { //we can implement Serializable to save changes
 	}
 	
 	//withdraw money method
-	public boolean withdraw(int i, float amount) {
+	public boolean withdraw(int i, double amount) {
 		return openAccount.getAccount(i).withdraw(amount);
 	}
 	

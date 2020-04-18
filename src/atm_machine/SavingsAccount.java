@@ -14,7 +14,7 @@ public class SavingsAccount extends BankAccount{
 	 * @param number account number
 	 * @param initialDeposit the starting amount when the account is started
 	 */
-	public SavingsAccount(String number, Double initialDeposit) { //changed number to string so it matches use account -Jose
+	public SavingsAccount(String number, double initialDeposit) { //changed number to string so it matches use account -Jose
 		super(number, initialDeposit);
 		// TODO Auto-generated constructor stub
 	}
