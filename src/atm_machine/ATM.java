@@ -102,18 +102,18 @@ public class ATM {
 		
 		if(choice == 2) {}
 		else if(choice == 3) {
-			System.out.println("Invalid Input");
-		}else {
+			System.out.println("Invalid Choice");
+		}
+		else {
 			System.out.print("How much money would you like to withdraw?: ");
 			String amtstr = cin.nextLine();
 			try {
-				float amount = Float.parseFloat(amtstr);
+				double amount = Double.parseDouble(amtstr);
 				if(myBank.withdraw(choice, amount)) {
 					giveMoney(amount);
 				}else {
-					System.out.println("Unable to withdraw specified amount");
+					System.out.println("Could Not withdraw Amount");
 				}
-				System.out.println(amount);
 			}catch(Exception e) {
 				System.out.println("Invalid Value");
 			}
@@ -145,6 +145,7 @@ public class ATM {
 		default: return 3;
 		}
 	}
+	
 	private void giveMoney(double amount) {
 		System.out.println(amount);
 	}
