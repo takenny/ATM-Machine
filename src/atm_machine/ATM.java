@@ -100,13 +100,23 @@ public class ATM {
 		Screen.displayWithdrawMenu();
 		int choice = getChoice();
 		
-		System.out.print("How much money would you like to withdraw?: ");
-		String amtstr = cin.nextLine();
-		try {
-			float amount = Float.parseFloat(amtstr);
-			System.out.println(amount);
-		}catch(Exception e) {
-			System.out.println("Invalid Value");
+		if(choice == 2) {}
+		else if(choice == 3) {
+			System.out.println("Invalid Input");
+		}else {
+			System.out.print("How much money would you like to withdraw?: ");
+			String amtstr = cin.nextLine();
+			try {
+				float amount = Float.parseFloat(amtstr);
+				if(myBank.withdraw(choice, amount)) {
+					giveMoney(amount);
+				}else {
+					System.out.println("Unable to withdraw specified amount");
+				}
+				System.out.println(amount);
+			}catch(Exception e) {
+				System.out.println("Invalid Value");
+			}
 		}
 	}
 	
@@ -134,5 +144,8 @@ public class ATM {
 		case "C": return 2;
 		default: return 3;
 		}
+	}
+	private void giveMoney(double amount) {
+		System.out.println(amount);
 	}
 }
