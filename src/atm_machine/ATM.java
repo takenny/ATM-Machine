@@ -147,6 +147,41 @@ public class ATM {
 	}
 	
 	private void giveMoney(double amount) {
-		System.out.println(amount);
+		int value[] = {5,10,20,50,100};
+		int remainder = (int) amount;
+		Money cash = new Money();
+		boolean firstTime = true;
+		
+		while(remainder != 0) {
+			if (remainder < 5) {
+				cash.updateMoney(1, remainder);
+				remainder = 0;
+			}else {
+				if(firstTime) {
+					System.out.println("How would your money: ");
+				}
+				else {
+					System.out.print("How would like the remaining " + remainder + ": ");
+				}
+				billsMenu(value, amount);
+				String choicestr = cin.nextLine();
+				try {
+					int choice = Integer.parseInt(choicestr) - 1;
+					int tempamount = remainder % value[choice];
+					remainder = remainder - (value[choice] * tempamount);
+					cash.valueToMoney(remainder);
+					cash.updateMoney(value[choice], tempamount);
+					System.out.println(cash.toString());
+				} catch(Exception e) {
+					System.out.println("Invalid Input");
+				}
+			}
+		}
+	}
+	
+	private void billsMenu(int value[], double amount) {
+		for(int i = 1; value[i-1] < amount || i < 6; i++) {
+			System.out.println(i + ") $" + value[i-1]);
+		}
 	}
 }
