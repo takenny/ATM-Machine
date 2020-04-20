@@ -47,6 +47,10 @@ public class Bank { //we can implement Serializable to save changes
 	}
 	
 	//deposit money method
+	public void deposit(int i, double amount)
+	{
+		openAccount.getAccount(i).deposit(amount);
+	}
 	//public void deposit(int i, float amount)
 	
 	//view balance

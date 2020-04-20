@@ -12,7 +12,7 @@ public class bypassStuff {
 	public void test() {
 		int value[] = {5,10,20,50,100};
 		int amount = 50;
-		myatm.billsMenu(value, amount);
+		//myatm.billsMenu(value, amount);
 	}
 
 }

@@ -1,6 +1,8 @@
 package atm_machine;
 
 import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner6;
 /**
  * 
  * @author Jose Gomez
@@ -91,7 +93,59 @@ public class ATM {
 	}
 	
 	public void depositFunds() {
-		System.out.println("Function Coming Soon");
+		Screen.depositMenu();
+		int choice = getChoice(); //choice of what account to use, savings or checkings
+		System.out.println("Would you like to deposit a check or cash? Type 1 for check, 2 for cash: ");
+		int checkorcashoption = Integer.parseInt(cin.nextLine());
+
+		if (checkorcashoption == 1) {// checking acount 
+			System.out.println("How much money is on the check?: ");
+			String amountStr = cin.nextLine();
+			try{
+				double amount = Double.parseDouble(amountStr);
+				myBank.deposit(choice, amount);
+				System.out.println("Thank you for depositing the check!");
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+		}
+		//cash option
+		else {
+			Money m = new Money(); 
+			System.out.println("How much cash would you like to deposit?");
+			String amnt = cin.nextLine();
+			try{
+				boolean checkedAmount = true;
+
+				while(checkedAmount){
+				double amount = Double.parseDouble(amnt);
+				m.valueToMoney(amount);
+				System.out.println("Is this the correct amount? Type Y for Yes, N for No: ");
+				m.toString();
+				String confirmation = cin.nextLine();
+				if(confirmation.equalsIgnoreCase("Y"))
+				{
+					myBank.deposit(choice, amount);
+					System.out.println("Thank you for depositing the cash!"); 
+					checkedAmount = false;
+				}
+				else
+				{
+					System.out.println("Please input the correct amount you wish to deposit: ");
+					amount = Double.parseDouble(cin.nextLine());
+				}
+				}
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+			pressEnterToContinue();
+		}
+		
+	//	System.out.println("Function Coming Soon");
 	}
 	/**
 	 * Withdraws money from bank account. 
@@ -140,7 +194,9 @@ public class ATM {
 		pressEnterToContinue();
 	}
 	/**
-	 * Gets the choice for the account. 0 is checking, 1 is savings, 2 corresponds to c/C which cancels the activity, 3 is an invalid option
+	 * Gets the choice for the account. 
+	 * For deposit Method: 0 is checking, 1 is savings , 2 corresponds to c/C which cancels the activity, and 3 is an invalid option 
+	 * For choosing account: 0 is checking, 1 is savings, 2 corresponds to c/C which cancels the activity, 3 is an invalid option
 	 * @return integer value. Each integer value corresponds to something different
 	 */
 	public int getChoice() {

@@ -80,6 +80,7 @@ public class Money {
      * Returns a string of the collection of the different bills used.
      * @return A string of the collection of the different bills used.
      */
+    @Override
     public String toString() {
         String listing = "";
         for (Map.Entry<Integer, Integer> entry : bills.entrySet()) {
