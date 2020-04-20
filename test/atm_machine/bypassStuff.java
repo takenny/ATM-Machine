@@ -5,13 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class bypassStuff {
-	Bank myBank = new Bank();
-	boolean open = myBank.accessAccount("7433", "00000");
+	ATM myatm = new ATM();
 	
 	
 	@Test
 	public void test() {
-		myBank.viewBalance(0);
+		int value[] = {5,10,20,50,100};
+		int amount = 50;
+		myatm.billsMenu(value, amount);
 	}
 
 }

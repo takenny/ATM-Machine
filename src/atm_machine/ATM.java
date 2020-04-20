@@ -115,15 +115,18 @@ public class ATM {
 					System.out.println("Could Not withdraw Amount");
 				}
 			}catch(Exception e) {
-				System.out.println("Invalid Value");
+				System.out.println(e);
 			}
 		}
+		pressEnterToContinue();
 	}
 	
 	public void transferFunds() {
 		System.out.println("Function coming soon");
 	}
-	
+	/**
+	 * Shows the balance in a specific account
+	 */
 	public void viewBalance() {
 		Screen.checkBalanceMoney();
 		int choice = getChoice();
@@ -134,7 +137,12 @@ public class ATM {
 		else{
 			System.out.println("Invalid Choice");
 		}
+		pressEnterToContinue();
 	}
+	/**
+	 * Gets the choice for the account. 0 is checking, 1 is savings, 2 corresponds to c/C which cancels the activity, 3 is an invalid option
+	 * @return integer value. Each integer value corresponds to something different
+	 */
 	public int getChoice() {
 		String choice = cin.nextLine();
 		switch(choice) {
@@ -145,43 +153,55 @@ public class ATM {
 		default: return 3;
 		}
 	}
-	
+	/**
+	 * Model of expelling the money through the slot in the atm machine
+	 * @param amount the money value being withdrawn
+	 */
 	private void giveMoney(double amount) {
 		int value[] = {5,10,20,50,100};
 		int remainder = (int) amount;
 		Money cash = new Money();
-		boolean firstTime = true;
 		
-		while(remainder != 0) {
-			if (remainder < 5) {
-				cash.updateMoney(1, remainder);
-				remainder = 0;
-			}else {
-				if(firstTime) {
-					System.out.println("How would your money: ");
-				}
-				else {
-					System.out.print("How would like the remaining " + remainder + ": ");
-				}
-				billsMenu(value, amount);
-				String choicestr = cin.nextLine();
-				try {
-					int choice = Integer.parseInt(choicestr) - 1;
+		if (remainder < 5) {
+			cash.updateMoney(1, remainder);
+			remainder = 0;
+		}else {
+			System.out.println("How would your money: ");
+			billsMenu(value, amount);
+			String choicestr = cin.nextLine();
+			try {
+				int choice = Integer.parseInt(choicestr) - 1;
+				if(value[choice] <= amount) {
 					int tempamount = remainder % value[choice];
 					remainder = remainder - (value[choice] * tempamount);
 					cash.valueToMoney(remainder);
 					cash.updateMoney(value[choice], tempamount);
 					System.out.println(cash.toString());
-				} catch(Exception e) {
-					System.out.println("Invalid Input");
+				}else {
+					System.out.println("Invalid Choice");
 				}
+			} catch(Exception e) {
+				System.out.println("Invalid Input");
 			}
 		}
 	}
-	
+	/**
+	 * Displays what bills you can choose from
+	 * @param value
+	 * @param amount
+	 */
 	private void billsMenu(int value[], double amount) {
-		for(int i = 1; value[i-1] < amount || i < 6; i++) {
-			System.out.println(i + ") $" + value[i-1]);
+		for(int i = 1; i-1 < 5; i++) {
+			if(value[i-1] <= amount) {
+				System.out.println(i + ") $" + value[i-1]);
+			}
 		}
+	}
+	/**
+	 * Prompts user to press enter to continue
+	 */
+	private void pressEnterToContinue() {
+		System.out.println("press return key to continue...");
+		String choice = cin.nextLine();
 	}
 }
