@@ -123,7 +123,6 @@ public class ATM {
 				double amount = Double.parseDouble(amnt);
 				m.valueToMoney(amount);
 				System.out.println("Is this the correct amount? Type Y for Yes, N for No: ");
-				m.toString();
 				String confirmation = cin.nextLine();
 				if(confirmation.equalsIgnoreCase("Y"))
 				{
