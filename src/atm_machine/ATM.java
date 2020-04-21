@@ -14,7 +14,7 @@ public class ATM {
 	
 	public ATM() {}
 	/**
-	 * This is the ATM welcome Screen<br>
+	 * This is the ATM welcome Screen
 	 * This screen is displayed until there is user input.
 	 */
 	public void welcomeScreen() {
