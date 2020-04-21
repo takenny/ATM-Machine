@@ -96,9 +96,9 @@ public class ATM {
 		Screen.depositMenu();
 		int choice = getChoice(); //choice of what account to use, savings or checkings
 		System.out.println("Would you like to deposit a check or cash? Type 1 for check, 2 for cash: ");
-		int checkorcashoption = Integer.parseInt(cin.nextLine());
+		int checkorcashoption = getChoice();
 
-		if (checkorcashoption == 1) {// checking acount 
+		if (checkorcashoption == 0) {// checking acount 
 			System.out.println("How much money is on the check?: ");
 			String amountStr = cin.nextLine();
 			try{
